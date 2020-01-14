@@ -1,0 +1,3 @@
+All written web content (i.e. sentences, paragraphs, articles, posts, etc.) are copyright Donald B. Kinghorn.
+
+All code samples and snippets are in the public domain (https://creativecommons.org/publicdomain/zero/1.0/).
