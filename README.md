@@ -44,13 +44,13 @@ Categories added as they arise. Accumulating as a mix of system-administration (
 
 The accumulated "notes" could form the basis of longer documents about the different catagories.
 
-Success with this will depend on automation! It needs to go something like; Idea/problem/inspiration --> create markdown along with snippets , commands etc. plus metadata --> commit, push --> trigger post/site generation, publish, notifications, tweet etc. All of that with one command. 
+Success with this will depend on automation! It needs to go something like; Idea/problem/inspiration --> create markdown along with snippets , commands, images etc. plus metadata --> commit, push --> trigger post/site generation, publish, notifications, tweet etc. All of that with one command. 
 
 ## What could go wrong?
 
 - **If it breaks "flow" then it will not work.** 
 - If I get too "involved" in the notes then it will be too disruptive. That means I have to resist rambling on with needless chatter, like I'm doing right now ...  
-- It has to "spark joy"! The good feeling from putting up more helpful posts has to be self rewarding. If it becomes a tedious chore then it won't work.
+- It has to "spark joy"! The good feeling from putting up more frequent, helpful posts has to be self rewarding. If it becomes a tedious chore then it won't work.
 - Technical difficulties? Yes, there could be some of those. I haven't worked out all of the details yet.
 - It needs to become a habit. After I get the functional details completely worked out I'll commit to doing it for at least a month before I evaluate effectiveness. We'll see how it goes!
 
