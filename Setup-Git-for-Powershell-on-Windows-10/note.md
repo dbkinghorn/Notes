@@ -12,16 +12,46 @@ The "common" recommendation for command-line git on Windows is to use the "git-b
 
 [posh-git](https://github.com/dahlbyk/posh-git) adds **tab completion** for git and informative **color highlighted shell prompt notifications** that will keep you aware of pending actions in your repository. 
 
-## Install
+## Install posh-git:
 
-## Step 1) (after installing Official Git)
-You will need to have "RemoteSigned" set for local PowerShell ExecutionPolicy. If you have enabled Windows "Developer Mode" you will likely have this set. ,
+### Check/Set Execution Policy
+You will need to have "RemoteSigned" set for local PowerShell ExecutionPolicy. If you have enabled Windows "Developer Mode" you will likely have this set. Check with this command in PowerShell,
 
 ```
 Get-ExecutionPolicy
 ```
+this should return `RemoteSigned`. If not then do,
+```
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
+```
 
+### Install posh-git from "PowerShell Gallery"
+PowerShell (version 5 or greater) has package management, and an official repository, ["PowerShell Gallery"](https://www.powershellgallery.com/).
+
+```
+Install-Module posh-git -Scope CurrentUser -Force
+```
+You may be asked to install ["NuGet"](https://www.nuget.org/) the .Net package manager. Go ahead and say "Yes" to that. 
+
+### Load the module and add git "info" to your PowerShell prompt
+
+To use posh-git you need to import its module into PowerShell
+
+```
+Import-Module posh-git
+```
+To make this module load by default (recommended) do,
+```
+Add-PoshGitToProfile -AllHosts
+```
+Now when you are in a directory with a git repo on your machine you will have a nice command-line git experience from PowerShell; command-completion and colorized git status information in your prompt.
 
 ## Example
+I use posh-git in PowerShell from a terminal in VScode. Here's a screen-shot of the repo for this post,
+![ps-git.png](PSgit-clip.png)
+The last line is reminding me to push to master on GitHub ... humm, maybe I should use a branch and merge...
 
-![ps-git.png]()
+---
+**Happy computing! --dbk @dbkinghorn**
+
+---
