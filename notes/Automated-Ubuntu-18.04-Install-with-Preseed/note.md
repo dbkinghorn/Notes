@@ -2,7 +2,6 @@
 
 This note describes creating an ISO image for a fully automatic, customized Ubuntu 18.04 server install. 
 
-
 The Ubuntu 18.04 install ISO used as the base for the customization is the [Ubuntu Alternative Download](http://cdimage.ubuntu.com/releases/18.04.3/release/) image that uses the Debian installer. In my Experience, installing Ubuntu on a wide variety of hardware has been very reliable using this installer rather than the "live" server ISO (which often fails because of GPU initialization).
 
 Download with,
