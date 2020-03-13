@@ -180,37 +180,38 @@ RANLIB       = echo
 
 ```
 Machine Summary::Distributed Processes=1
-GB/s Summary::Raw Total B/W=21.7112
+GB/s Summary::Total with convergence and optimization phase overhead=21.1542
 Final Summary::HPCG result is VALID with a GFLOP/s rating of=2.78833
 Machine Summary::Distributed Processes=2
-GB/s Summary::Raw Total B/W=36.3174
+GB/s Summary::Total with convergence and optimization phase overhead=35.5141
 Final Summary::HPCG result is VALID with a GFLOP/s rating of=4.68155
 Machine Summary::Distributed Processes=4
-GB/s Summary::Raw Total B/W=61.5974
+GB/s Summary::Total with convergence and optimization phase overhead=60.3809
 Final Summary::HPCG result is VALID with a GFLOP/s rating of=7.96031
 Machine Summary::Distributed Processes=8
-GB/s Summary::Raw Total B/W=75.9337
+GB/s Summary::Total with convergence and optimization phase overhead=74.9427
 Final Summary::HPCG result is VALID with a GFLOP/s rating of=9.88102
 Machine Summary::Distributed Processes=16
-GB/s Summary::Raw Total B/W=78.0643
+GB/s Summary::Total with convergence and optimization phase overhead=77.4573
 Final Summary::HPCG result is VALID with a GFLOP/s rating of=10.2131
 Machine Summary::Distributed Processes=24
-GB/s Summary::Raw Total B/W=75.8291
+GB/s Summary::Total with convergence and optimization phase overhead=75.3837
 Final Summary::HPCG result is VALID with a GFLOP/s rating of=9.93995
 Machine Summary::Distributed Processes=32
-GB/s Summary::Raw Total B/W=74.7221
+GB/s Summary::Total with convergence and optimization phase overhead=74.3516
 Final Summary::HPCG result is VALID with a GFLOP/s rating of=9.80401
 Machine Summary::Distributed Processes=40
-GB/s Summary::Raw Total B/W=73.4958
+GB/s Summary::Total with convergence and optimization phase overhead=73.1733
 Final Summary::HPCG result is VALID with a GFLOP/s rating of=9.64874
 Machine Summary::Distributed Processes=48
-GB/s Summary::Raw Total B/W=72.6165
+GB/s Summary::Total with convergence and optimization phase overhead=72.3237
 Final Summary::HPCG result is VALID with a GFLOP/s rating of=9.53691
 Machine Summary::Distributed Processes=56
-GB/s Summary::Raw Total B/W=71.6045
+GB/s Summary::Total with convergence and optimization phase overhead=71.335
 Final Summary::HPCG result is VALID with a GFLOP/s rating of=9.40644
 Machine Summary::Distributed Processes=64
-GB/s Summary::Raw Total B/W=70.7768
+GB/s Summary::Total with convergence and optimization phase overhead=70.5222
 Final Summary::HPCG result is VALID with a GFLOP/s rating of=9.29951
+
 ```
 
