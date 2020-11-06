@@ -1,0 +1,139 @@
+Handle 0x0012, DMI type 17, 84 bytes
+Memory Device
+        Array Handle: 0x000A
+        Error Information Handle: 0x0011
+        Total Width: 64 bits
+        Data Width: 64 bits
+        Size: 16384 MB
+        Form Factor: DIMM
+        Set: None
+        Locator: DIMM 0
+        Bank Locator: P0 CHANNEL A
+        Type: DDR4
+        Type Detail: Synchronous Unbuffered (Unregistered)
+        Speed: 3200 MT/s
+        Manufacturer: Unknown
+        Serial Number: E2E7A3EE
+        Asset Tag: Not Specified
+        Part Number: BLS16G4D32AESB.M16FE
+        Rank: 2
+        Configured Memory Speed: 3200 MT/s
+        Minimum Voltage: 1.2 V
+        Maximum Voltage: 1.2 V
+        Configured Voltage: 1.2 V
+        Memory Technology: DRAM
+        Memory Operating Mode Capability: Volatile memory
+        Firmware Version: Unknown
+        Module Manufacturer ID: Bank 6, Hex 0x9B
+        Module Product ID: Unknown
+        Memory Subsystem Controller Manufacturer ID: Unknown
+        Memory Subsystem Controller Product ID: Unknown
+        Non-Volatile Size: None
+        Volatile Size: 16 GB
+        Cache Size: None
+        Logical Size: None
+
+Handle 0x0015, DMI type 17, 84 bytes
+Memory Device
+        Array Handle: 0x000A
+        Error Information Handle: 0x0014
+        Total Width: 64 bits
+        Data Width: 64 bits
+        Size: 16384 MB
+        Form Factor: DIMM
+        Set: None
+        Locator: DIMM 1
+        Bank Locator: P0 CHANNEL A
+        Type: DDR4
+        Type Detail: Synchronous Unbuffered (Unregistered)
+        Speed: 3200 MT/s
+        Manufacturer: Unknown
+        Serial Number: E2E7CE94
+        Asset Tag: Not Specified
+        Part Number: BLS16G4D32AESB.M16FE
+        Rank: 2
+        Configured Memory Speed: 3200 MT/s
+        Minimum Voltage: 1.2 V
+        Maximum Voltage: 1.2 V
+        Configured Voltage: 1.2 V
+        Memory Technology: DRAM
+        Memory Operating Mode Capability: Volatile memory
+        Firmware Version: Unknown
+        Module Manufacturer ID: Bank 6, Hex 0x9B
+        Module Product ID: Unknown
+        Memory Subsystem Controller Manufacturer ID: Unknown
+        Memory Subsystem Controller Product ID: Unknown
+        Non-Volatile Size: None
+        Volatile Size: 16 GB
+        Cache Size: None
+        Logical Size: None
+
+Handle 0x0018, DMI type 17, 84 bytes
+Memory Device
+        Array Handle: 0x000A
+        Error Information Handle: 0x0017
+        Total Width: 64 bits
+        Data Width: 64 bits
+        Size: 16384 MB
+        Form Factor: DIMM
+        Set: None
+        Locator: DIMM 0
+        Bank Locator: P0 CHANNEL B
+        Type: DDR4
+        Type Detail: Synchronous Unbuffered (Unregistered)
+        Speed: 3200 MT/s
+        Manufacturer: Unknown
+        Serial Number: E2E7A441
+        Asset Tag: Not Specified
+        Part Number: BLS16G4D32AESB.M16FE
+        Rank: 2
+        Configured Memory Speed: 3200 MT/s
+        Minimum Voltage: 1.2 V
+        Maximum Voltage: 1.2 V
+        Configured Voltage: 1.2 V
+        Memory Technology: DRAM
+        Memory Operating Mode Capability: Volatile memory
+        Firmware Version: Unknown
+        Module Manufacturer ID: Bank 6, Hex 0x9B
+        Module Product ID: Unknown
+        Memory Subsystem Controller Manufacturer ID: Unknown
+        Memory Subsystem Controller Product ID: Unknown
+        Non-Volatile Size: None
+        Volatile Size: 16 GB
+        Cache Size: None
+        Logical Size: None
+
+Handle 0x001B, DMI type 17, 84 bytes
+Memory Device
+        Array Handle: 0x000A
+        Error Information Handle: 0x001A
+        Total Width: 64 bits
+        Data Width: 64 bits
+        Size: 16384 MB
+        Form Factor: DIMM
+        Set: None
+        Locator: DIMM 1
+        Bank Locator: P0 CHANNEL B
+        Type: DDR4
+        Type Detail: Synchronous Unbuffered (Unregistered)
+        Speed: 3200 MT/s
+        Manufacturer: Unknown
+        Serial Number: E2E7A530
+        Asset Tag: Not Specified
+        Part Number: BLS16G4D32AESB.M16FE
+        Rank: 2
+        Configured Memory Speed: 3200 MT/s
+        Minimum Voltage: 1.2 V
+        Maximum Voltage: 1.2 V
+        Configured Voltage: 1.2 V
+        Memory Technology: DRAM
+        Memory Operating Mode Capability: Volatile memory
+        Firmware Version: Unknown
+        Module Manufacturer ID: Bank 6, Hex 0x9B
+        Module Product ID: Unknown
+        Memory Subsystem Controller Manufacturer ID: Unknown
+        Memory Subsystem Controller Product ID: Unknown
+        Non-Volatile Size: None
+        Volatile Size: 16 GB
+        Cache Size: None
+        Logical Size: None
