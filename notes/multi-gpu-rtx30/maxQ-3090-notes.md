@@ -1,0 +1,2 @@
+# maxQ for NVIDIA RTX3090
+

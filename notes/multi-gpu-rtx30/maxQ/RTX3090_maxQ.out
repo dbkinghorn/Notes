@@ -1,0 +1,56 @@
+                                                                                                                                                
+================
+== TensorFlow ==
+================
+
+NVIDIA Release 20.10-tf1 (build 16775850)
+TensorFlow Version 1.15.4
+
+Container image Copyright (c) 2020, NVIDIA CORPORATION.  All rights reserved.
+Copyright 2017-2020 The TensorFlow Authors.  All rights reserved.
+
+NVIDIA Deep Learning Profiler (dlprof) Copyright (c) 2020, NVIDIA CORPORATION.  All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION.  All rights reserved.
+NVIDIA modifications are covered by the license terms that apply to the underlying project or file.
+
+NOTE: MOFED driver for multi-node communication was not detected.
+      Multi-node communication performance may be reduced.
+
+PY 3.6.9 (default, Oct  8 2020, 12:12:24) 
+[GCC 8.4.0]
+TF 1.15.4
+PY 3.6.9 (default, Oct  8 2020, 12:12:24) 
+[GCC 8.4.0]
+TF 1.15.4
+Script arguments:
+  --layers 50
+  --batch_size 96
+  --num_iter 180
+  --iter_unit epoch
+  --display_every 10
+  --precision fp32
+  --use_xla True
+  --predict False
+Training
+Training
+  Step Epoch Img/sec   Loss  LR
+     1   1.0     9.0  7.592  8.563 2.00000
+    10  10.0    90.4  3.831  4.803 1.80500
+    20  20.0   966.6  0.025  1.003 1.60006
+    30  30.0   966.6  0.124  1.103 1.40747
+    40  40.0   961.9  0.046  1.028 1.22722
+    50  50.0   965.5  0.237  1.223 1.05932
+    60  60.0   969.2  0.132  1.121 0.90377
+    70  70.0   958.2  0.230  1.223 0.76056
+    80  80.0   959.8  0.074  1.070 0.62969
+    90  90.0   963.2  0.239  1.239 0.51117
+   100 100.0   964.9  0.225  1.228 0.40500
+   110 110.0   960.1  0.170  1.176 0.31117
+   120 120.0   961.4  0.152  1.160 0.22969
+   130 130.0   963.7  0.196  1.205 0.16056
+   140 140.0   960.1  0.008  1.019 0.10377
+   150 150.0   966.7  0.001  1.012 0.05932
+   160 160.0   960.6  0.000  1.011 0.02722
+   170 170.0   959.5  0.000  1.011 0.00747
+   180 180.0   735.3  0.000  1.011 0.00006
