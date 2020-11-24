@@ -7,7 +7,7 @@ In the testing in the post mentioned above I used the NVIDIA System Management I
 
 I used Ubuntu 20.04 server as the OS for the performance testing and for the startup service testing in this post. However, any modern Linux distribution using systemd should be OK.
 
-## nvidia-smi commands and a script to set a power limit on RTX30 GPU's
+## nvidia-smi commands and a script to set a power limit on RTX30 GPUs
 
 Here are the needed/useful nvidia-smi commands,
  **Persistence Mode**
