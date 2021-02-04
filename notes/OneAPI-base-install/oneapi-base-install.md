@@ -148,18 +148,14 @@ You should probably explore that directory. One of the things you will find is *
 ```
 source $HOME/intel/oneAPI/setvar.sh 
 ```  
-to your .barshrc file if you want all newly started shell to be initialized. I don't recommend that because it can interfere with other "paths" and libraries in unexpected ways. Personally I prefer to create a script with that "source" line in my $HOME/bin directory and then just run it in any shell where I want access to the oneAPI compilers and tools. For example,
-```
-kinghorn@i9:~$ cat $HOME/bin/oneapienv.sh 
-#! /usr/bin/env bash
+to your .barshrc file if you want "all" newly started shells to be initialized. I don't recommend that because it can interfere with other "paths" and libraries in unexpected ways. 
 
-source $HOME/intel/oneapi/setvars.sh
+Personally I prefer to create an alias with that "source" line in my $HOME/.bashrc and then just run that alias in any shell where I want access to the oneAPI compilers and tools. For example, you can add the following to the end of your .bashrc file,
 ```
-to make the executable,
+# alias to set oneAPI environment
+alias oneapi="source  $HOME/intel/oneapi/setvars.sh"
 ```
-chmod 755 $HOME/bin/oneapienv.sh
-```
-Note: if you don't have  "bin" directory in your home directory you can create it and (at least on Ubuntu) it will automatically be on your default path.
+I named the alias "oneapi" but you can call it anything you want. When you open a new shell just type that alias and hit return and your oneAPI environment will be initialized in that shell.
 
 Read the documentation for the tools and compilers and enjoy!
 
