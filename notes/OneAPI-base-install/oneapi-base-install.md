@@ -172,4 +172,4 @@ In a later post I will go through a setup with the oneAPI AI toolkit using conda
 
 I hope you have found this post helpful and wish you the best of luck exploring these excellent developers tools.
 
-**Happy Computting --dbk @dbkinghorn**
+**Happy Computing --dbk @dbkinghorn**
