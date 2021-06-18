@@ -1,0 +1,24 @@
+running numpy norm test
+norm: 25001832.14	 Run time: 1.66382 seconds	 GFLOPS: 1202
+running numpy norm test
+norm: 24999827.45	 Run time: 1.61928 seconds	 GFLOPS: 1235
+running numpy norm test
+norm: 25002827.56	 Run time: 1.37109 seconds	 GFLOPS: 1459
+running numpy matmul test
+norm: 2525.67	 Run time: 1.36507 seconds	 GFLOPS: 1465
+running numpy matmul test
+norm: 2502.41	 Run time: 1.37339 seconds	 GFLOPS: 1456
+running numpy matmul test
+norm: 2456.98	 Run time: 1.36327 seconds	 GFLOPS: 1467
+running numpy cholesky test
+norm: 70.78	 Run time: 1.22879 seconds	 GFLOPS: 916
+running numpy cholesky test
+norm: 70.58	 Run time: 1.20695 seconds	 GFLOPS: 932
+running numpy cholesky test
+norm: 70.77	 Run time: 1.20610 seconds	 GFLOPS: 933
+running numpy eig test
+norm: 6251127.64	 Run time: 39.52173 seconds	 GFLOPS: 4
+running numpy eig test
+norm: 6252374.81	 Run time: 39.15464 seconds	 GFLOPS: 4
+running numpy eig test
+norm: 6250662.19	 Run time: 38.75800 seconds	 GFLOPS: 4

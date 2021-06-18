@@ -1,0 +1,6 @@
+Info: Benchmark time: 32 CPUs 0.00210154 s/step 0.0243234 days/ns 604.066 MB memory
+Info: Benchmark time: 32 CPUs 0.00208342 s/step 0.0241136 days/ns 604.324 MB memory
+WallClock: 4.222179  CPUTime: 4.100559  Memory: 618.460938 MB
+Info: Benchmark time: 64 CPUs 0.00223441 s/step 0.0258613 days/ns 632.594 MB memory
+Info: Benchmark time: 64 CPUs 0.0022208 s/step 0.0257037 days/ns 632.852 MB memory
+WallClock: 11.847807  CPUTime: 11.705527  Memory: 646.316406 MB

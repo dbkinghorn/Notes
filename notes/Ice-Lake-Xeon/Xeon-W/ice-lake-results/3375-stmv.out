@@ -1,0 +1,8 @@
+76 3375W
+Info: Benchmark time: 76 CPUs 0.168237 s/step 1.94719 days/ns 6127.61 MB memory
+Info: Benchmark time: 76 CPUs 0.167305 s/step 1.9364 days/ns 6127.61 MB memory
+WallClock: 112.714088  CPUTime: 112.584938  Memory: 6170.753906 MB
+38 3375W
+Info: Benchmark time: 38 CPUs 0.175603 s/step 2.03245 days/ns 5858.05 MB memory
+Info: Benchmark time: 38 CPUs 0.173763 s/step 2.01114 days/ns 5858.05 MB memory
+WallClock: 97.496025  CPUTime: 97.210838  Memory: 5861.542969 MB
