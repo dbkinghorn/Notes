@@ -1,4 +1,4 @@
-# NVIDIA 3080Ti vs 3090 Compute Performance 
+# NVIDIA 3080Ti Compute Performance ML/AI HPC
 
 ## Introduction
 
@@ -13,9 +13,7 @@ The NVIDIA RTX3080Ti is out and will hopefully be available to ease the difficul
 In this post I present a few HPC and ML benchmarks with the 3080Ti mostly comparing against the 3090. This is not a comprehensive evaluation of the 3080Ti but should give you and idea of performance for numerical computing tasks. Note I have comparisons in the charts using the NVIDIA A100 PCIe, 40GB, high-end compute-GPU. The A100 is in a whole different class over the RTX series! It's the most impressive computing device I've every used! (but, very expensive and passively cooled)
 
 
-## The benchmarks ResNet50, HPC, HPC-AI, HPCG
-
-I decided to run the 
+## The benchmarks ResNet50, HPC, HPC-AI, HPCG 
 
 - [**ResNet50:** 50 layer residual ANN](https://en.wikipedia.org/wiki/Residual_neural_network). ResNet50 is a Deep Neural Network model that makes a good hardware benchmark when using synthetic data. Results are model-training performance as images/second at a given batch_size and precision (fp32 or fp16). ResNet50 is one of the models used in [MLPerf](mlperf.org) where is it trained on 1.28 Million image ImageNet dataset to "74.9% Top-1 accuracy".    
 
@@ -24,8 +22,6 @@ I decided to run the
 - [**HPL-AI:** Mixed Precision Benchmark](https://icl.bitbucket.io/hpl-ai/) Is the same HPL benchmark but using lower/mixed precision that would more typically be used for training ML/AI models. On the A100 this utilizes TF32, 32-bit Tensor-Cores. This benchmark is now also part of the Top500 supercomputer rankings.
 
 - [**HPCG:** High Performance Conjugate Gradients](https://www.hpcg-benchmark.org/), this is another benchmark used for ranking on the Top500 list. It is a multigrid preconditioned conjugate gradient algorithm, with sparse matrix-vector multiplication with global IO patterns. It is a workload typical of many problems involving numerical solutions of sets of differential equations. This is very much memory/IO-bound!
-
-These 3 benchmarks provide a good measure of the numerical computing performance of a computer system. These are the benchmarks used to rank the largest supercomputer clusters in the world. Of course I'm running them on a single server or workstation. Still, having "grown up" with supercomputers I'm always impressed by the performance from a single node modern system. The 4 x A100 system I've tested provides more computing performance than the first multi million-dollar, Top500 supercomputer deployment I was involved with!
 
 **Keep in mind these are "Benchmarks"!** I made an effort to find (large) problem sizes and good parameters that would showcase the hardware. Measured GPU performance is particularly sensitive to problems size (larger is generally better). For the GPU benchmarks I have used NVIDIA's optimized ["NVIDIA HPC-Benchmarks 21.4" container from NGC](https://ngc.nvidia.com/catalog/containers/nvidia:hpc-benchmarks). That is their Supercomputer benchmark set!  
 
@@ -107,7 +103,7 @@ Notes:
 - The "0" result for the single A100 was because at a reasonable problem size I was unable to get a result that passed residual error (i.e. the calculation blew up) That is precisely the reason that much of Scientific computing is done at the higher FP64 precision.
 - **The results for the RTX 3080Ti and 3090 are very good!** That is 15 Trillion floating point operations per second. For application where FP32 mixed precision is sufficient consumer GPUs can offer outstanding performance.
 - The multiple A100 results are just stunning!
-- **The results from the HPL-AI are sensitive to the problem size, larger problems usually give better performance. The RTX 3090 results in this chart is using the same problem size as the RTX 3080Ti. This is because at larger problem sizes the 3090 failed residual error criteria the same way the single A100 did.** I had hoped this would be a place where I could show the potential performance advantage of the 3090s extra memory. I have included some of the job outpu in an Appendix at the end of the post.    
+- **The results from the HPL-AI are sensitive to the problem size, larger problems usually give better performance. The RTX 3090 results in this chart is using the same problem size as the RTX 3080Ti. This is because at larger problem sizes the 3090 failed residual error criteria the same way the single A100 did.** I had hoped this would be a place where I could show the potential performance advantage of the 3090s extra memory. I have included some of the job output in an Appendix at the end of the post.    
 
 ## HPCG
 
@@ -117,6 +113,7 @@ Notes:
 - The RTX 3080Ti and 3090 both have excellent GDDR6x memory with similar data-width and give similar performance for this memory bound code. 
 
 ## Conclusions
+
 
 The main takeaways are:
 1. The RTX 3080Ti is very similar to the 3090 but with twice the memory. 
@@ -139,7 +136,7 @@ I think the RTX 3080Ti is a very good GPU and would do well in a ML/Ai or Molecu
 Here is some output data from the HPL-AI testing to illustrate the "residual error" failure on the 3090 at larger problem sizes.
 
 
-**3080Ti 44000**
+**3080Ti 44000 equations**
 ```
 Convergence history: Classical Iterative Refinement
 Iteration      Residual
