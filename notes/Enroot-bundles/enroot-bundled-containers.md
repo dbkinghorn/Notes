@@ -178,7 +178,7 @@ Make that file executable,
 chmod 755 ~/.local/share/enroot/np-openblas/usr/local/bin/np-norm-openblas.py
 ```
 
-## Test the modified container image and modify the startup "rc" file.
+## Test the modified container image and modify the startup "rc" file
 
 Lets see what we have done. We'll start the container and run the benchmark program.
 
