@@ -54,14 +54,14 @@
 <tr><th>CPU</th><th>Numpy Version</th><th>Matmul (GFLOPS) </th><th>F-Norm (GFLOPS)</th><th>Cholesky (GFLOPS)</th></tr>
 </thead>
 <tbody>
-<tr><td>Xeon-W 3375  </td><td> Anaconda    </td><td> 2271 </td><td> 2251 </td><td> 902 </td></tr>
-<tr><td>TR Pro 3995WX</td><td> Anaconda    </td><td>  501 </td><td>  484 </td><td> 401 </td></tr>
+<tr><td>Xeon-W 3375  </td><td> Anaconda <br/> numpy-1.20.3 mkl-2021.3.0   </td><td> 2271 </td><td> 2251 </td><td> 902 </td></tr>
+<tr><td>TR Pro 3995WX</td><td> Anaconda<br/>numpy-1.19.2 mkl-2020.2    </td><td>  501 </td><td>  484 </td><td> 401 </td></tr>
 
-<tr><td>Xeon-W 3375  </td><td> Conda-Forge </td><td>  348 </td><td>  346 </td><td> 235 </td></tr>
-<tr><td>TR Pro 3995WX</td><td> Conda-Forge </td><td> 1421 </td><td> 1415 </td><td> 522 </td></tr>
+<tr><td>Xeon-W 3375  </td><td> Conda-Forge<br/>numpy-1.20.3  openblas-0.3.17</td><td>  348 </td><td>  346 </td><td> 235 </td></tr>
+<tr><td>TR Pro 3995WX</td><td> Conda-Forge <br/>numpy-1.20.3  openblas-0.3.17</td><td> 1421 </td><td> 1415 </td><td> 522 </td></tr>
 
-<tr><td>Xeon-W 3375  </td><td> Intel       </td><td> 2267 </td><td> 2247 </td><td> 893 </td></tr>
-<tr><td>TR Pro 3995WX</td><td> Intel       </td><td> 1467 </td><td> 1459 </td><td> 933 </td></tr>
+<tr><td>Xeon-W 3375  </td><td> Intel<br/>numpy-1.20.3  mkl-2021.3.0-intel       </td><td> 2267 </td><td> 2247 </td><td> 893 </td></tr>
+<tr><td>TR Pro 3995WX</td><td> Intel <br/>numpy-1.20.3  mkl-2021.3.0-intel      </td><td> 1467 </td><td> 1459 </td><td> 933 </td></tr>
 
 </tbody>
 </table>
