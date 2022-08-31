@@ -60,4 +60,8 @@ Here is older testing results for 4 x RTX 3090 power scaling vs performance for 
 
 ![4 x RTX3090 powerlimit vs performance ](./RTX-3090-powerlimit-vs-performance.jpeg)
 
+## Conclusion
+
+I hope this post has shown that the many benefits of GPU power limiting can be easily achieved. It is a reasonable thing to do for both high wattage and lower wattage NVIDIA GPUs. The performance cost is minimal for significant benefit to power usage, system cooling, component longevity, and noise.
+
 **Happy Computing! --dbk @dbkinghorn**
