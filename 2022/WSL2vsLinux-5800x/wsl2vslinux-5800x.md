@@ -12,12 +12,11 @@ For this post I've chosen 3 of my standard performance benchmarks,
 - [HPCG (High Performance Conjugate Gradient):](https://hpcg-benchmark.org) Memory performance evaluation. HPCG is representative of memory-bound applications. It is the secondary performance benchmark for the Top500 Supercomputer list. HPL being the primary benchmark.
 - [NAMD:](https://www.ks.uiuc.edu/Research/namd/) Molecular dynamics application that is a favorite of mine for hardware testing. It is my "real world" testing application.
 
-I used [Spack](https://spack.io) to create optimized [docker](https://www.docker.com) containers of these (and other applications) with a build target for AMD zen3 using [AMD AOCC compiler](https://developer.amd.com/amd-aocc/) and [AOCL performance libraries](https://developer.amd.com/amd-aocl/).
-These containers were then bundled as no-dependency self-running containers using [NVIDIA enroot](https://github.com/NVIDIA/enroot).
+I used [Spack](https://spack.io) to create optimized [docker](https://www.docker.com) containers of these (and other applications) with a build target for AMD zen3 using [AMD AOCC compiler](https://developer.amd.com/amd-aocc/) and [AOCL performance libraries](https://developer.amd.com/amd-aocl/). These containers were then bundled as no-dependency self-running containers using [NVIDIA enroot](https://github.com/NVIDIA/enroot).
 
 ## Test System
 
-The test system for this work is my personal AMD Ryzen 5800X 8-core system with 64GB DDR4 2400MHz memory. I use this system as a test platform, dual booting between Ubuntu 22.04 Linux and Windows 11. The Windows install is setup with WSL2 running Ubuntu 22.04. This is a very modest test system that was convient to use for this proof-of-concept testing. Expect to see more extensive testing with high-end AMD, Intel, and NVIDIA hardware in the future.
+The test system for this work is my personal AMD Ryzen 5800X 8-core system with 64GB DDR4 2400MHz memory. I use this system as a test platform, dual booting between Ubuntu 22.04 Linux and Windows 11. The Windows install is setup with WSL2 running Ubuntu 22.04. This is a very modest test system that was convenient to use for this proof-of-concept testing. Expect to see more extensive testing with high-end AMD, Intel, and NVIDIA hardware in the future.
 
 Note: By default Windows only allocates 50% of available memory to WSL. I increased this to 56GB (out of 64GB) to accommodate the "80% memory Linpack job run". Linpack usually give the best performance with a problem size that uses 80-90% of memory. On the Linux run I used approx. 80% of 64GB and on WSL approx. 90% of 56GB for a problem size of Ns=81088 for both.
 
@@ -32,7 +31,7 @@ Linpack benchmark is the "standard HPC" performance measure. It solves a system 
 Notes:
 
 - The problems size was 32000 for all runs except the 80%mem run which was 81088
-- This is the worst case for WSL! Windows needs to reserve more core clock cycles for itself and is required by Linux native. This gave a notable performance slowdown when more than 2 cores were in use.
+- This is the worst case for WSL! Windows needs to reserve more core clock cycles for itself than is required by Linux native. This gave a notable performance slowdown when more than 2 cores were in use.
 - HPL was run using openMP threads on a since MPI rank (this gave better results than MPI alone or MPI+omp threads)
 
 ```
@@ -47,11 +46,11 @@ High Performance Conjugate Gradient, is the second standard HPC benchmark. It is
 
 ![Chart of HPGC, Linux Native vs WSL2 (Ryzen 5800X) 1-8 cores](./hpcg-l-vs-wsl.png)
 
-Note:
+Notes:
 
 - It is often the case on systems with many cores for this benchmark to do best on 1/2 or 1/4 of the cores. On the 5800X both Linux native and WSL had there best results with 2 cores.
 - Native Linux and WSL are very close here, better than I expected.
-- HPCG gave best performance running all processes on MPI ranks i.e. omp threads ws set to 1.
+- HPCG gave best performance running all processes on MPI ranks i.e. omp threads were set to 1.
 
 ```
 mpirun --allow-run-as-root -np ${NUM_CORES} --map-by l3cache --mca btl self,vader -x OMP_NUM_THREADS=1 xhpcg
@@ -66,10 +65,10 @@ mpirun --allow-run-as-root -np ${NUM_CORES} --map-by l3cache --mca btl self,vade
 These are 3 different job sizes and types.
 
 - [ApoA1 benchmark (92,224 atoms, periodic, PME)](https://www.ks.uiuc.edu/Research/namd/utilities/apoa1/)
-- [ATPase benchmark (327,506 atoms, periodic, PME)](https://www.ks.uiuc.edu/Research/namd/utilities/f1atpase/)
+- [F1ATPase benchmark (327,506 atoms, periodic, PME)](https://www.ks.uiuc.edu/Research/namd/utilities/f1atpase/)
 - [STMV (virus) benchmark (1,066,628 atoms, periodic, PME)](https://www.ks.uiuc.edu/Research/namd/utilities/stmv/)
 
-![Chart of NAMD, Linux Native vs WSL2 (Ryzen 5800X) 1-8 cores](./namd-l-vs-wsl.png)
+![Chart of NAMD, Linux Native vs WSL2 (Ryzen 5800X)](./namd-l-vs-wsl.png)
 
 Notes:
 
