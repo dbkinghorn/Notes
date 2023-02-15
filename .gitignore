@@ -1,3 +1,4 @@
+no-git/
 mm/
 .vscode/*
 !.vscode/settings.json
