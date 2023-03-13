@@ -1,4 +1,4 @@
-# MultiGPU RTX4090 and AMD vs Intel Issues vs RTX6000Ada or RTX3090 
+# Problems With RTX4090 MultiGPU and AMD vs Intel vs RTX6000Ada or RTX3090 
 
 ## Introduction
 I was prompted to do some testing by a commenter on one of my recent posts, [NVIDIA RTX4090 ML-AI and Scientific Computing Performance (Preliminary)](https://www.pugetsystems.com/labs/hpc/nvidia-rtx4090-ml-ai-and-scientific-computing-performance-preliminary-2382/). They had concerns about problems with dual NVIDIA RTX4090s on AMD Threadripper Pro platforms.
@@ -52,7 +52,7 @@ This is the most relevant component information.
 - PugetBench-minGPT (Based on [Andrej Karpathy's minGPT](https://github.com/karpathy/minGPT) uses PyTorch DDP)
 ## Testing Results
 
-#### Table: MultiGPU RTX4090 and AMD vs Intel Issues vs RTX6000Ada or RTX3090
+#### Table: Problems With RTX4090 MultiGPU AMD vs Intel vs RTX6000Ada or RTX3090
 
 |Test Jobs|2 x RTX4090 (TrPro)|2 x RTX4090 (Xeon W)|2 x RTX3090 (TrPro)|2 x RTX6000 Ada (TrPro)|2 x RTX6000 Ada (Xeon-W)|
 |---------|-------------------|--------------------|-------------------|-----------------------|------------------------|
@@ -98,6 +98,8 @@ I hope that publishing these results will make the issues with RTX4090 multi GPU
 My testing was on Linux however, we have also seen issues with some of our Windows testing that is consistent. In particular differences between behavior between 2 x RTX4090 and 2 x 6000 Ada. 
 
 If fixes or workarounds are found they will be posted back here as notes at the top of the page. 
+
+The Appendix provides more detail on a few of the job run failures. 
 
 ## Appendix Select job output excerpts and comments
 
@@ -161,5 +163,18 @@ RuntimeError: probability tensor contains either `inf`, `nan` or element < 0
 ```
 
 ### Console screenshot on Tr Pro during HPL job run
-This screenshot shows the "stuck" GPU clock frequency on the AMD system. Performance monitoring shows only a small fraction of the GPU power being used. 
-![Consol screenshot on Tr Pro during HPL job run showing low clock freq.](./TrPro-HPL-issue.png)
+This output clip shows the "stuck" GPU clock frequency and only a small fraction of the GPU power being used.  on the AMD Tr Pro system. 
+```
+!!! WARNING: Rank: 1 : trp64 : GPU 0000:61:00.0 Clock: 626 MHz Temp: 49 C Power: 70 W PCIe gen 4 x16
+!!! WARNING: Rank: 0 : trp64 : GPU 0000:41:00.0 Clock: 626 MHz Temp: 50 C Power: 65 W PCIe gen 4 x16
+!!! WARNING: Rank: 1 : trp64 : GPU 0000:61:00.0 Clock: 626 MHz Temp: 50 C Power: 70 W PCIe gen 4 x16
+!!! WARNING: Rank: 0 : trp64 : GPU 0000:41:00.0 Clock: 626 MHz Temp: 50 C Power: 65 W PCIe gen 4 x16
+Prog= 2.38% N_left= 71424 Time= 10.63 Time_left= 435.92 iGF= 557.23 GF= 557.23 iGF_per= 278.62 GF_per= 278.62
+!!! WARNING: Rank: 0 : trp64 : GPU 0000:41:00.0 Clock: 626 MHz Temp: 51 C Power: 66 W PCIe gen 4 x16
+Prog= 3.56% N_left= 71136 Time= 15.81 Time_left= 428.61 iGF= 565.41 GF= 559.91 iGF_per= 282.70 GF_per= 279.96
+!!! WARNING: Rank: 1 : trp64 : GPU 0000:61:00.0 Clock: 626 MHz Temp: 50 C Power: 70 W PCIe gen 4 x16
+!!! WARNING: Rank: 0 : trp64 : GPU 0000:41:00.0 Clock: 626 MHz Temp: 51 C Power: 65 W PCIe gen 4 x16
+Prog= 4.72% N_left= 70848 Time= 20.85 Time_left= 420.54 iGF= 575.77 GF= 563.75 iGF_per= 287.89 GF_per= 281.87
+```
+
+**Happy computing! --dbk @dbkinghorn** 
