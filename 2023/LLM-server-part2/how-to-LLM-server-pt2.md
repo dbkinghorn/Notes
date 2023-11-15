@@ -1,5 +1,4 @@
-# LLM Server Setup Part 1 - Base OS
-
+# This will be the container setup post -- Part 2 (after removing the base OS stuff)
 
 ## Introduction
 
@@ -25,15 +24,15 @@ The main system I've been working with is configured as follows:
 
 This system is capable of serving Llama2-70b and derivatives with good performance. I recommend a configuration like this for small-scale on-prem deployment. With 20-50 end users for inference or a small development work group working on applications and fine-tuning with smaller models.
 
-However, **the instructions in this post (and its follow-ups) are suitable for use with much more modest hardware!** Almost any system with one or more NVIDIA GPUs that have 16GB or more of VRAM will get you started. 
+However, the instructions in this post (and its follow-ups) are suitable for use with much more modest hardware! Almost any system with one or more NVIDIA GPUs that have 16GB or more of VRAM will get you started. 
 
-Note: at this point, I am only recommending NVIDIA GPU acceleration. But, soon AMD GPUs will be supported enough to be useful. I have already started experimenting with them. CPU-only deployment is also possible and I will investigate the feasibility of that in the future.
+Note: at this point, I am only recommending NVIDIA GPU acceleration. However, soon AMD GPUs will be supported enough to be useful. I have already started experimenting with them. CPU-only deployment is also possible and I will investigate the feasibility of that in the future.
 
 For hardware configurations see [Puget Systems "Workstations for Machine Learning / AI"](https://www.pugetsystems.com/solutions/scientific-computing-workstations/machine-learning-ai/). 
 
 ## Base Ubuntu Server install and config
 
-I will describe a server config. However, you can do this setup for a personal AI dev system too, possibly using Ubuntu Desktop instead of server. The tips and fixes below should be helpful for Desktops too.
+I will describe a server config. However, you can do this setup for a personal AI dev system too possibly using Ubuntu Desktop instead of server.
 
 ### Step 1 - Install Ubuntu Server
 
@@ -87,7 +86,7 @@ On the next boot there will be no more waiting for unused interfaces to get an a
 
 **You (or ask your network administrator) should assign a "static lease" from your DHCP server to the interface you want to be running your services on.** You can get your current assigned IP address and interface MAC address with: `ip addr`. Alternatively you can arrange to use a static IP address and configure `netplan` accordingly. [See the docs](https://netplan.readthedocs.io/en/stable/).
 
-#### Annoyance 2 - Grub menu timeout is set to 0 seconds (optional)
+#### Annoyance 2 - Grub menu time out is set to 0 seconds (optional)
 **How to get the grub boot menu to show during boot in Ubuntu.**
 
 In the file /etc/default/grub change the GRUB_TIMEOUT value to 6 (the number of seconds you want it to wait for a key press) and change "hidden" to "menu". Then run update-grub. Do this manually or with the following scriptable commands:
@@ -188,4 +187,166 @@ After the container runtime configuration post we will move on to [Hugging Face 
 
 **Happy computing --dbk @dbkinghorn**
 
+
+### Step 3 - Install the NVIDIA Container Toolkit
+This is a set of tools that will allow us to run containers with GPU support. [Note that this has been recently updated and as of this writing there are mixed instructions on the web.] [Current reference guide.](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
+
+```bash
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+  && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list 
+```
+
+```bash
+sudo apt update
+sudo apt install -y nvidia-container-toolkit
+```
+
+Now on to container runtime installation. I'll cover Docker and NVIDIA Enroot.
+
+### Step 4 - Install Docker
+
+Docker is ubiquitous and well-supported. I use it for creating/distributing new containers. I do prefer user-space container applications when I can use them. [Podman]( ) for example is a great alternative but it is unfortunately not well supported (kept current) by Canonical/Ubuntu. There are times when you just need to use docker. 
+
+I will mostly follow the official Docker docs for the base Install.
+Reference: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
+
+For GPU setup we will take guidence from NVIDIA. 
+Reference: [https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
+
+#### Uninstall old versions
+This post is about a fresh Ubuntu server install but if you have an old version of Docker installed for any reason you will want to remove it first. 
+
+```bash
+sudo apt-get remove docker docker-engine docker.io docker-compose docker-doc containerd runc
+```
+
+#### Add Docker's official GPG key:
+```bash
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+```
+
+#### Add the Docker repository to Apt sources:
+```bash
+echo \
+  "deb [arch=\"$(dpkg --print-architecture)\" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  \"$(. /etc/os-release && echo \"$VERSION_CODENAME\")\" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update
+```
+#### Install Docker:
+```bash
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+#### Verify that Docker Engine is installed correctly by running the hello-world image.
+```bash
+sudo docker run hello-world
+```
+That should run successfully as root. We will want to run docker as a non-root user.
+
+### Step 4.1 - Docker Post Install
+[Reference: https://docs.docker.com/engine/install/linux-postinstall/](https://docs.docker.com/engine/install/linux-postinstall/)
+
+#### Create a docker group.
+```bash
+sudo groupadd docker
+```
+##### Add your user account to the docker group.
+```bash
+sudo usermod -aG docker $USER
+```
+#### Activate the changes to groups.
+```bash
+newgrp docker
+```
+
+#### Verify that you can run docker commands without sudo.
+```bash
+docker run hello-world
+```
+
+#### Set to start on Boot
+```bash
+sudo systemctl enable --now docker.service 
+sudo systemctl enable --now containerd.service
+```
+The `--now` option will start the service immediately.
+
+### Step "Arrrrggg!!" - What to do if Docker breaks your LAN! (hopefully optional)
+Docker is a fairly intrusive application. Mysterious network problems occasionally happen. The one I have to deal with most often is docker starting its internal network pool on the same subnet as an already-in-use LAN at my location. This causes all kinds of problems and it is not well documented. 
+
+#### Check the docker network config
+```bash
+docker network inspect bridge
+```
+If the docker bridge network is on the same subnet as one of your LAN segments you will need to change it. 
+**DO NOT DO THIS IF YOU DON'T HAVE TO!**
+You can change the docker default network pools by editing `/etc/docker/daemon.json`. With a fresh Docker install the daemon.json file won't exist yet. The following script section will create the file and change the default network pool to 10.13.0.0/16, (assuming that does not interfere with your LAN.)
+```bash
+echo '{
+  "default-address-pools": [
+    {"base":"10.13.0.0/16","size":24}
+  ]
+}' | sudo tee /etc/docker/daemon.json > /dev/null
+```
+ 
+Hopefully, you won't need and of that!
+
+### Step 4.3 - Configure Docker to use the NVIDIA Container Toolkit
+In step 3 we installed the NVIDIA Container Toolkit. Now we need to configure Docker to use it.
+
+```bash
+sudo nvidia-ctk runtime configure --runtime=docker
+```
+#### Fix Docker default shm size
+The shared memory size for docker is too small for containers doing heavy computation. We will fix this by editing the /etc/docker/daemon.json file. If the file does not exist yet, create it. 
+```bash
+echo '{
+    "default-shm-size": "1G",
+    "default-ulimits": {
+         "memlock": { "name":"memlock", "soft":  -1, "hard": -1 },
+         "stack"  : { "name":"stack", "soft": 67108864, "hard": 67108864 }
+    }
+}' | sudo tee -a /etc/docker/daemon.json > /dev/null
+```
+
+#### Restart Docker
+```bash
+sudo systemctl restart docker
+```
+
+### Step 5 - Install NVIDIA Enroot
+
+My favorite container runtime is [NVIDIA Enroot]( ) and I use it whenever I can, however, it is not widely adopted. I will cover its installation in the next section. 
+
+#***** GO CHECK FOR THE CURRENT RELEASE! *****#
+# ***** AND ENTER IT HERE                *****#
+# https://github.com/NVIDIA/enroot/releases
+RELEASE=3.4.1
+
+# Install dependencies
+#apt-get update
+apt-get install --yes curl gawk jq squashfs-tools parallel
+apt-get install --yes fuse-overlayfs pigz squashfuse
+
+
+## Install
+arch=$(dpkg --print-architecture)
+# arch is amd64
+curl -fSsL -O https://github.com/NVIDIA/enroot/releases/download/v${RELEASE}/enroot_${RELEASE}-1_${arch}.deb
+curl -fSsL -O https://github.com/NVIDIA/enroot/releases/download/v${RELEASE}/enroot+caps_${RELEASE}-1_${arch}.deb # optional
+
+sudo apt-get install --yes ./enroot_${RELEASE}-1_${arch}.deb
+sudo apt-get install --yes ./enroot+caps_${RELEASE}-1_${arch}.deb
+
+# Clean up
+rm ./enroot_${RELEASE}-1_${arch}.deb
+rm ./enroot+caps_${RELEASE}-1_${arch}.deb
+rm ./enroot-check_*.run
 
