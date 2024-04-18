@@ -1,0 +1,54 @@
+Number of threads: 56
+2000   2000   1       347.3361 347.3361
+Number of threads: 48
+2000   2000   1       405.7885 405.7885
+Number of threads: 40
+2000   2000   1       424.6887 424.6887
+Number of threads: 32
+2000   2000   1       458.4427 458.4427
+Number of threads: 16
+2000   2000   1       328.4779 328.4779
+Number of threads: 8
+2000   2000   1       297.1362 297.1362
+Number of threads: 4
+2000   2000   1       183.8798 183.8798
+Number of threads: 2
+2000   2000   1       135.5222 135.5222
+Number of threads: 1
+2000   2000   1       60.1455  60.1455 
+Number of threads: 56
+1600   1600   1       228.2119 228.2119
+Number of threads: 48
+1600   1600   1       253.4786 253.4786
+Number of threads: 40
+1600   1600   1       149.3093 149.3093
+Number of threads: 32
+1600   1600   1       326.1532 326.1532
+Number of threads: 16
+1600   1600   1       236.9880 236.9880
+Number of threads: 8
+1600   1600   1       222.8404 222.8404
+Number of threads: 4
+1600   1600   1       142.0737 142.0737
+Number of threads: 2
+1600   1600   1       124.0832 124.0832
+Number of threads: 1
+1600   1600   1       55.1725  55.1725 
+Number of threads: 56
+114560 114560 1       2971.9344 2971.9344
+Number of threads: 48
+114560 114560 1       2789.5167 2789.5167
+Number of threads: 40
+114560 114560 1       2376.3017 2376.3017
+Number of threads: 32
+114560 114560 1       2123.3344 2123.3344
+Number of threads: 16
+114560 114560 1       1480.2664 1480.2664
+Number of threads: 8
+114560 114560 1       846.8198 846.8198
+Number of threads: 4
+114560 114560 1       445.3362 445.3362
+Number of threads: 2
+114560 114560 1       223.9172 223.9172
+Number of threads: 1
+114560 114560 1       113.8206 113.8206
